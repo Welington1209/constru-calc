@@ -8,14 +8,20 @@ export const ListProvider = ({ children }) => {
 
   const addToList = useCallback(
     (item) => {
-      setList((prevList) => [...prevList, item]);
+      setList((prevList) => [
+        ...prevList,
+        { ...item, id: crypto.randomUUID() },
+      ]);
     },
     [setList]
   );
 
-  const removeFromList = useCallback((id) => {
-    setList((prevList) => prevList.filter((item) => item.id !== id));
-  }, []);
+  const removeFromList = useCallback(
+    (id) => {
+      setList((prevList) => prevList.filter((item) => item.id !== id));
+    },
+    [setList]
+  );
 
   useEffect(() => {
     setListCount(list.length);

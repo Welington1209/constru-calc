@@ -12,11 +12,14 @@ const Lista = () => {
         <p>Não há nada na sua lista ainda!</p>
       ) : (
         <ul className="list-ul">
-          {list.map((item, index) => (
-            <li key={index}>
+          {list.map((item) => (
+            <li key={item.id}>
               <p>Material: {item.material} </p>
               <p>Quantidade: {item.quantidade}</p>
-              <FaTrash className="icon" onClick={() => removeFromList()} />
+              <FaTrash
+                className="icon"
+                onClick={() => removeFromList(item.id)}
+              />
             </li>
           ))}
         </ul>

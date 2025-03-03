@@ -59,7 +59,6 @@ const Tijolos = () => {
       addToList({ quantidade: resultado, material }); // Adiciona ao contexto
     }
     setResultado(null);
-    console.log(list);
   };
 
   return (
