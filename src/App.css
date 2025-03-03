@@ -1,0 +1,60 @@
+.materials {
+  border-radius: 0.5rem;
+  color: #000;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  transition: 0.4s;
+}
+
+.materials:hover {
+  scale: 1.05;
+}
+
+.cart-num {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: rgb(21, 255, 0);
+  border-radius: 50%;
+  position: absolute;
+  top: -3px;
+  right: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  font-size: 0.7rem;
+}
+
+.title {
+  padding: 0.5rem;
+  color: #fafafa;
+  z-index: 1;
+}
+
+@media (max-width: 450px) {
+  .app {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .materials {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .cart-num {
+    width: 10px;
+    height: 10px;
+  }
+
+  .title {
+    margin-top: 1rem;
+  }
+}

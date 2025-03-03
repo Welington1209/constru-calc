@@ -1,0 +1,23 @@
+.home {
+  flex-direction: column;
+  font-size: 1.5rem;
+}
+
+.calc-control {
+  display: flex;
+  z-index: 1;
+  margin: auto;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.calc {
+  flex-direction: column;
+  width: auto;
+  align-items: center;
+  transition: all 0.4s;
+}
+
+.calc:hover {
+  background: none;
+}
