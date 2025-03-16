@@ -1,58 +1,31 @@
 import React, { useContext, useState, useEffect } from "react";
-import "../styles/Tijolos.css";
+
 import { ListContext } from "../context/listContext";
+import useCalculate from "../hooks/useCalculate";
+import useCounter from "../hooks/useCounter";
+
 import Construtor from "../img/construtor.png";
 import Bloco from "../img/blocos.svg";
 import Tijolo from "../img/tijolos.svg";
 
+import "../styles/Tijolos.css";
+
 const Tijolos = () => {
-  const [material, setMaterial] = useState("tijolo");
-  const [comprimento, setComprimento] = useState("");
-  const [altura, setAltura] = useState("");
-  const [resultado, setResultado] = useState(null);
+  const {
+    material,
+    setMaterial,
+    resultado,
+    setResultado,
+    comprimento,
+    setComprimento,
+    altura,
+    setAltura,
+    calculate,
+  } = useCalculate();
+
+  const { count } = useCounter();
+
   const { list, addToList, addCount } = useContext(ListContext);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    setCount(list.length);
-  }, [list]);
-
-  let blocoAltura, blocoComprimento;
-
-  const comprimentoNum = parseFloat(comprimento.replace(",", "."));
-  const alturaNum = parseFloat(altura.replace(",", "."));
-
-  const calculate = () => {
-    if (material === "tijolo") {
-      blocoAltura = 0.2;
-      blocoComprimento = 0.2;
-    } else if (material === "bloco") {
-      blocoAltura = 0.2;
-      blocoComprimento = 0.4;
-    } else {
-      return "Material inválido!";
-    }
-
-    if (isNaN(alturaNum) || isNaN(comprimentoNum)) {
-      return "Por favor, insira valores válidos!";
-    }
-
-    const area = comprimentoNum * alturaNum;
-    const areaBloco = blocoAltura * blocoComprimento;
-
-    const total = Math.ceil(area / areaBloco);
-
-    setResultado(total);
-
-    return total;
-  };
-
-  useEffect(() => {
-    if (resultado !== null) {
-      setAltura("");
-      setComprimento("");
-    }
-  }, [resultado]);
 
   const addItemToList = () => {
     if (resultado !== null) {
