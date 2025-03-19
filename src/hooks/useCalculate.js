@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 export default function useCalculate() {
   const [material, setMaterial] = useState("tijolo");
   const [comprimento, setComprimento] = useState("");
   const [altura, setAltura] = useState("");
   const [resultado, setResultado] = useState(null);
+
+  const inputRef = useRef("");
 
   let blocoAltura, blocoComprimento;
 
@@ -24,7 +27,8 @@ export default function useCalculate() {
     }
 
     if (isNaN(alturaNum) || isNaN(comprimentoNum)) {
-      return "Por favor, insira valores válidos!";
+      alert("Por favor, insira valores válidos!");
+      return;
     }
 
     const area = comprimentoNum * alturaNum;
@@ -54,5 +58,6 @@ export default function useCalculate() {
     altura,
     setAltura,
     calculate,
+    inputRef,
   };
 }
