@@ -62,7 +62,6 @@ section {
   width: 50%;
   color: #000;
   margin-top: 1rem;
-  color: #ec6969;
 }
 
 .container {
@@ -84,6 +83,5 @@ section {
   .container {
     flex-direction: column;
     margin-top: 2rem;
-  
   }
 }

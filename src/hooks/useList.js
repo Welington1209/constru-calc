@@ -13,7 +13,7 @@ export default function useList() {
     if (resultado !== null) {
       addToList({ quantidade: resultado, material }); // Adiciona ao contexto
     }
-    setResultado(null);
+    // setResultado(null);
   };
 
   return { addItemToList };

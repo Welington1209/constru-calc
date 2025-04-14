@@ -1,14 +1,15 @@
 import React from "react";
+import "../components/styles/ResultDisplay.css";
 
-const ResultDisplay = ({resultado, material}) => {
+const ResultDisplay = ({ resultado, material }) => {
   return (
     <>
       {resultado && (
-        <ul>
-          <li>Quantidade:</li>
-          <li>{resultado}</li>
-          <li>Material:</li>
+        <ul className="display">
+          <li>Material :</li>
           <li>{material}</li>
+          <li>Quantidade :</li>
+          <li>{resultado}</li>
         </ul>
       )}
     </>

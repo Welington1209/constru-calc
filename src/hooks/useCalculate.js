@@ -8,6 +8,14 @@ export default function useCalculate() {
   const [altura, setAltura] = useState("");
   const [resultado, setResultado] = useState(null);
 
+  const areaDaJanela = 1.2;
+  const areaDaPorta = 1.68;
+
+  const [numJanelas, setNumJanelas] = useState(0);
+  const [numPortas, setNumPortas] = useState(0);
+
+  const [estadoDisplay, setEstadoDisplay] = useState(false);
+
   const inputRef = useRef("");
 
   let blocoAltura, blocoComprimento;
@@ -34,19 +42,41 @@ export default function useCalculate() {
     const area = comprimentoNum * alturaNum;
     const areaBloco = blocoAltura * blocoComprimento;
 
-    const total = Math.ceil(area / areaBloco);
+    const descontoDeEsquadria = () => {
+      let descontoJanela = numJanelas * areaDaJanela;
+      let descontoPorta = numPortas * areaDaPorta;
+
+      return {
+        descontoTotal: descontoJanela + descontoPorta,
+      };
+    };
+
+    const { descontoTotal } = descontoDeEsquadria();
+
+    const areaUtil = area - descontoTotal;
+    const total = Math.ceil(areaUtil / areaBloco);
 
     setResultado(total);
+
+    setEstadoDisplay(true);
 
     return total;
   };
 
+  const alternarEstadoDisplay = () => {
+    setEstadoDisplay(!estadoDisplay);
+  };
+
   useEffect(() => {
-    if (resultado !== null) {
+    if (estadoDisplay) {
       setAltura("");
       setComprimento("");
+      setNumJanelas(0);
+      setNumPortas(0);
+    } else {
+      setMaterial("tijolo");
     }
-  }, [resultado]);
+  }, [estadoDisplay]);
 
   return {
     material,
@@ -58,6 +88,14 @@ export default function useCalculate() {
     altura,
     setAltura,
     calculate,
+    alternarEstadoDisplay,
+    estadoDisplay,
     inputRef,
+    areaDaJanela,
+    areaDaPorta,
+    numJanelas,
+    setNumJanelas,
+    numPortas,
+    setNumPortas,
   };
 }

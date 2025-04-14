@@ -1,0 +1,21 @@
+.display {
+  border-radius: 0.5rem;
+  background-color: #f28c28;
+  color: #000;
+  font-weight: bold;
+  padding: 0.5rem;
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.display li {
+  width: 40%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

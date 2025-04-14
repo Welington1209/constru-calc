@@ -1,11 +1,17 @@
 import React from "react";
 
-const ActionButtons = ({ calculate, resultado, addItemToList }) => {
+const ActionButtons = ({ calculate, hiddenDisplay, estadoDisplay, addItemToList }) => {
   return (
     <>
-      <button className="btn" onClick={calculate}>
-        {!resultado ? "Calcular" : "Calcular Novamente"}
-      </button>
+      {!estadoDisplay ? (
+        <button className="btn" onClick={calculate}>
+          Calcular
+        </button>
+      ) : (
+        <button className="btn" onClick={hiddenDisplay}>
+          Calcular Novamente
+        </button>
+      )}
 
       <button className="btn" onClick={addItemToList}>
         Adicionar a Lista
