@@ -40,7 +40,7 @@ body::before {
 
 section {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   padding: 2rem;
   justify-content: space-between;
@@ -65,7 +65,7 @@ section {
 }
 
 .container {
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 1rem;
   width: 650px;
   max-width: 100%;
@@ -80,6 +80,10 @@ section {
 }
 
 @media (max-width: 450px) {
+  body {
+    overflow: auto;
+  }
+
   .container {
     flex-direction: column;
     margin-top: 2rem;
