@@ -2,7 +2,7 @@ import React from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const ButtonPdfDownload = () => {
+const ButtonPdfDownload = ({ setModalVisible }) => {
   const generatePDF = () => {
     const input = document.getElementById("print-area");
 
@@ -15,11 +15,23 @@ const ButtonPdfDownload = () => {
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
       pdf.save("lista-de-materiais.pdf");
+
+      setModalVisible(true);
+
+      setTimeout(() => {
+        setModalVisible(false);
+      }, 5000);
     });
   };
 
-  return <button onClick={generatePDF}> Baixar Lista </button>;
+  return (
+    <button className="btn" onClick={generatePDF}>
+      {" "}
+      Baixar Lista{" "}
+    </button>
+  );
 };
 
 export default ButtonPdfDownload;

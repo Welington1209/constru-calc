@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.list-container p {
+  font-size: 1.2rem;
+}
+
 .list-ul {
   width: 100%;
   flex-direction: column;
@@ -15,7 +19,6 @@
   padding: 0.2rem;
   color: #000;
   font-size: 1.2rem;
-
 }
 
 .list-ul li {

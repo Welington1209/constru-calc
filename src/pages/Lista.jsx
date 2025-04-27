@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { ListContext } from "../context/listContext";
 import "../styles/Lista.css";
 import { FaTrash } from "react-icons/fa";
 import ButtonPdfDownload from "../components/ButtonPdfDownload";
+import Modal from "../components/Modal";
 
 const Lista = () => {
   const { list, removeFromList } = useContext(ListContext);
+
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <div className="list-container">
       {list.length === 0 ? (
@@ -27,8 +30,10 @@ const Lista = () => {
           </ul>
         </>
       )}
-
-      <ButtonPdfDownload />
+      {list.length > 0 && (
+        <ButtonPdfDownload setModalVisible={setModalVisible} />
+      )}
+      {modalVisible && <Modal />}{" "}
     </div>
   );
 };
