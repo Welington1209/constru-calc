@@ -14,6 +14,7 @@ import ResultDisplay from "../components/ResultDisplay";
 
 import Door from "../img/door.svg";
 import Window from "../img/window.svg";
+import Modal from "../components/Modal";
 
 const Tijolos = () => {
   const {
@@ -41,9 +42,18 @@ const Tijolos = () => {
 
   const { addToList, addCount } = useContext(ListContext);
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const message = "Item adicionado a lista!";
+
   const addItemToList = () => {
     if (resultado !== null) {
+      setModalVisible(true);
+
       addToList({ quantidade: resultado, material });
+
+      setTimeout(() => {
+        setModalVisible(false);
+      }, 6000);
       alternarEstadoDisplay();
     }
     // inputRef.current.focus();
@@ -108,6 +118,8 @@ const Tijolos = () => {
           estadoDisplay={estadoDisplay}
           addItemToList={addItemToList}
         />
+
+        {modalVisible && <Modal message={message} />}
       </div>
     </div>
   );

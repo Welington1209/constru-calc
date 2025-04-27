@@ -10,6 +10,7 @@ const Lista = () => {
   const { list, removeFromList } = useContext(ListContext);
 
   const [modalVisible, setModalVisible] = useState(false);
+  const message = "Lista de materiais baixada com sucesso!"
   return (
     <div className="list-container">
       {list.length === 0 ? (
@@ -33,7 +34,7 @@ const Lista = () => {
       {list.length > 0 && (
         <ButtonPdfDownload setModalVisible={setModalVisible} />
       )}
-      {modalVisible && <Modal />}{" "}
+      {modalVisible && <Modal message={message} />}{" "}
     </div>
   );
 };
